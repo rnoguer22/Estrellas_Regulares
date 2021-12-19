@@ -6,8 +6,10 @@ def generar_estrella(n):
         angulo = 0
         if n % 4 == 0:
             angulo = 180 - (360/n)   # Angulo si n es multiplo de 4
+        elif n % 3 == 0:
+            angulo = (360/n) + 120   # Angulo si n es multiplo de 3
         else:
-            pass
+            pass   # El angulo es 0 si ninguna de las condiciones es cierta, por lo que se dibujara una linea recta
         return angulo
 
     turtle.speed(0)       # Incrementamos la velocidad
