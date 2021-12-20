@@ -1,7 +1,7 @@
 import turtle
 
 def generar_estrella(n):
-    
+
     def mcm(num1,num2):  # Funcion para calcular el minimo comun multiplo de dos numeros
         multiplos_num1=[]  
         multiplos_num2=[]
@@ -30,12 +30,27 @@ def generar_estrella(n):
     turtle.hideturtle()   # De esta manera desaparece el puntero
     turtle.color("red", "red")   
     turtle.begin_fill()
+    
     for _ in range (n):   # Con este bucle se nos genera la estrella
         turtle.right(calcular_angulo(n))  
         turtle.forward(200)
+
     turtle.end_fill()
     turtle.exitonclick()  # Salimos haciendo un simple click
     
 if __name__ == '__main__':
-    n = int(input("Numero de puntas de la estrella: "))
+    
+    # Introducimos un bucle para que el codigo tenga sentido
+    while True:   
+        n = input("Numero de puntas de la estrella: ")
+        try:
+            n = int(n)
+            if n <= 4:
+                print ("Solo hay estrellas de 5 o mas puntas tonto")
+            else:
+                break
+        except:
+            print("Introduce un numero entero por favor")
+            pass
+    
     generar_estrella(n)
