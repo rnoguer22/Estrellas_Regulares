@@ -18,14 +18,23 @@ def generar_estrella(n):
         angulo = 0   # Definimos el angulo, el cual cambiaremos a continuacion
         for i in range (n // 2,1,-1):
             if mcm(n, i) == n*i:
-                angulo = (360/n) * i   # Formula para el angulo
+                angulo = (360/n) * i   # Formula para el angulo de giro
         return angulo
 
-    turtle.speed(0)       # Incrementamos la velocidad
+    if n == 5:
+        turtle.title("Estrella del Winter Soldier")
+    else:
+        turtle.title("Estrella de {} puntas".format(n))   # Titulo del archivo
+
+    turtle.speed(5)       # Incrementamos la velocidad
+    turtle.hideturtle()   # De esta manera desaparece el puntero
+    turtle.color("red", "red")   
+    turtle.begin_fill()
     for _ in range (n):   # Con este bucle se nos genera la estrella
         turtle.right(calcular_angulo(n))  
         turtle.forward(200)
-    turtle.exitonclick()
+    turtle.end_fill()
+    turtle.exitonclick()  # Salimos haciendo un simple click
     
 if __name__ == '__main__':
     n = int(input("Numero de puntas de la estrella: "))
