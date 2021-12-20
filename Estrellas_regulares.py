@@ -14,19 +14,16 @@ def generar_estrella(n):
                 multiplos_comunes.append(num)   # multiplos_num2, lo añadimos a la lista multiplos_comunes
         return min(multiplos_comunes)   # Devuelve el numero mas pequeño de los multiplos comunes
 
-    def calcular_angulo():
-        angulo = 0
-        if n % 4 == 0:
-            angulo = 180 - (360/n)   # Angulo si n es multiplo de 4
-        elif n % 3 == 0:
-            angulo = (360/n) + 120   # Angulo si n es multiplo de 3
-        else:
-            pass   # El angulo es 0 si ninguna de las condiciones es cierta, por lo que se dibujara una linea recta
+    def calcular_angulo(n):
+        angulo = 0   # Definimos el angulo, el cual cambiaremos a continuacion
+        for i in range (n // 2,1,-1):
+            if mcm(n, i) == n*i:
+                angulo = (360/n) * i   # Formula para el angulo
         return angulo
 
     turtle.speed(0)       # Incrementamos la velocidad
     for _ in range (n):   # Con este bucle se nos genera la estrella
-        turtle.right(calcular_angulo())  
+        turtle.right(calcular_angulo(n))  
         turtle.forward(200)
     turtle.exitonclick()
     
